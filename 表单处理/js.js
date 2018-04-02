@@ -76,9 +76,52 @@ addEvent(window,'load',function(){
 		document.getElementsByTagName('p')[0].innerHTML=this.value.substring(this.selectionStart,this.selectionEnd);
 		//alert(this.value.substring(this.selectionStart,this.selectionEnd))	//返回选中文本
 	})
+	
+
+	addEvent(user,'keypress',function(evt){
+		var e=evt||window.event;
+		var charCode=e.charCode;
+		//防止输入非数字 
+		if(!/\d/.test(String.fromCharCode(charCode))&&charCode>8){
+			preDef(e);
+		}
+	})
+	addEvent(content,'copy',function(evt){						//防止复制
+		var e=evt||window.event;
+		preDef(e);
+	})
+	addEvent(content,'cut',function(evt){						//防止剪切
+		var e=evt||window.event;
+		preDef(e);
+	})
+	addEvent(content,'paste',function(evt){						//防止粘贴
+		var e=evt||window.event;
+		preDef(e);
+	})
 	*/
 
-	addEvent(user,'keypress',function)
+	addEvent(content,'keyup',function(){
+		this.value=this.value.replace(/[^\d]/g,'');				//验证后取消，非数字键返回空值
+	})
+
+	//自动换行
+	addEvent(fm.elements['a1'],'keyup',tabForward);
+	addEvent(fm.elements['a2'],'keyup',tabForward);
+	addEvent(fm.elements['a3'],'keyup',tabForward);
+
+	function tabForward(evt){
+		var e=evt||window.event;
+		var target=getTarget(e);
+		if(target.value.length==target.getAttribute('maxlength')){
+			for(var i=0;i<fm.elements.length;i++){
+				if(fm.elements[i]==target){
+					fm.elements[i+1].focus();
+					return;
+				}
+			}
+		}
+
+	}
 })
 
 /*选择部分文本实现跨浏览器兼容
