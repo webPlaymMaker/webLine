@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <link rel='stylesheet' href='css.css'></link>
+  <script type="text/javascript" src='base.js'></script>
+  <script type="text/javascript" src='js.js'></script>
+  <title> 表单处理</title>
+ </head>
+ <body>
+	<form id='myform' name='yourform'>
+		姓名:<input type='text' name='user' value='text'></input>
+		<input type='submit' id='inp' value='提交' ></input>
+		<textarea name='content'>textarea</textarea>
+	</form>
+ </body>
+</html>

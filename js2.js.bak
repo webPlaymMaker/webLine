@@ -1,0 +1,16 @@
+addEvent(window,'load',function(){
+	var fm=document.getElementById('myform');
+	var city=fm.elements[0];
+	var info=fm.elements['info'];
+	//city.selectedIndex=2;					//设置默认选择
+	//city.options[1].selected=true;		//设置默认选择
+
+	//添加选项的js方法
+	var option=new Option('洛阳v','洛阳t');
+	city.add(option,0);
+
+	//移动选项
+	addEvent(city,'click',function(){
+		info.add(this.options[city.selectedIndex],undefined);
+	})
+})	
